@@ -4,17 +4,17 @@ import sys
 N, S = map(int, sys.stdin.readline().split())
 nums = list(map(int, sys.stdin.readline().split()))
 
-start = 0
+left = 0
 current_sum = 0
 min_length = float('inf')
-for i in range(N):
-    current_sum += nums[i]
+for right in range(N):
+    current_sum += nums[right]
     while current_sum >= S:
-        length = i-start+1
+        length = right-left+1
         if min_length > length:
             min_length = length
-        current_sum -= nums[start]
-        start += 1
+        current_sum -= nums[left]
+        left += 1
 
 if min_length != float('inf'):
     print(min_length)
